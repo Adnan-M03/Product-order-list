@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  
+  <title>Frontend Mentor | Product list with cart</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <h2>Desserts</h2>
+    <ul class="cards">
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-waffle-mobile.jpg 654w,
+            assets/images/image-waffle-tablet.jpg 427w,
+            assets/images/image-waffle-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+          <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+
+        Waffle with Berries
+        Waffle
+        6.50
+      </li>
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-creme-brulee-mobile.jpg 654w,
+            assets/images/image-creme-brulee-tablet.jpg 427w,
+            assets/images/image-creme-brulee-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+
+        Vanilla Bean Crème Brûlée
+        Crème Brûlée
+        7.00
+      </li>
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-macaron-mobile.jpg 654w,
+            assets/images/image-meringue-tablet.jpg 427w,
+            assets/images/image-macaron-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+
+        Macaron Mix of Five
+        Macaron
+        8.00
+      </li>
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-tiramisu-mobile.jpg 654w,
+            assets/images/image-tiramisu-tablet.jpg 427w,
+            assets/images/image-tiramisu-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+        Classic Tiramisu
+        Tiramisu
+        5.50
+      </li>
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-baklava-mobile.jpg 654w,
+            assets/images/image-baklava-tablet.jpg 427w,
+            assets/images/image-baklava-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+
+        Pistachio Baklava
+        Baklava
+        4.00
+      </li>
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-meringue-mobile.jpg 654w,
+            assets/images/image-meringue-tablet.jpg 427w,
+            assets/images/image-meringue-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+        Lemon Meringue Pie
+        Pie
+        5.00
+      </li>
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-cake-mobile.jpg 654w,
+            assets/images/image-cake-tablet.jpg 427w,
+            assets/images/image-cake-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+        Red Velvet Cake
+        Cake
+        4.50
+      </li>
+      <li>
+        <div class="container">
+          <img 
+            srcset="assets/images/image-brownie-mobile.jpg 654w,
+            assets/images/image-brownie-tablet.jpg 427w,
+            assets/images/image-brownie-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+        Salted Caramel Brownie
+        Brownie
+        4.50
+      </li>
+      <li class="last-list">
+        <div class="container">
+          <img 
+            srcset="assets/images/image-panna-cotta-mobile.jpg 654w,
+            assets/images/image-panna-cotta-tablet.jpg 427w,
+            assets/images/image-panna-cotta-desktop.jpg 502w"
+            sizes="(max-width:400px) 654px,
+            (max-width:560px) 427px,
+            502px"
+            src="" alt="" class="cards-image" >
+            <button class="btn"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+        </div>
+        Panna Cotta
+        <p>Vanilla Panna Cotta</p>
+        6.50
+      </li>
+    </ul>
+
+  <div class="cart">
+    <h3>Your Cart (<!-- Quantity -->)</h3>
+    <img src="assets/images/illustration-empty-cart.svg" alt="Empty card Image">
+    <p>Your added items will appear here</p>
+  </div>
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  <script src="script.js" ></script>
+</body>
+</html>
