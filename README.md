@@ -2,7 +2,7 @@
 
 ![Design preview for the Product list with cart coding challenge](./preview.jpg)
 
-## Welcome! 👋
+## Welcome my guys! 👋
 
 Thanks for checking out this front-end coding challenge.
 

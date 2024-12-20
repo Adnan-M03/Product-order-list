@@ -59,7 +59,6 @@ ul li{
         }
 }
 .cart{
-    /* border: 1px solid black; */
     padding: 1rem;
     border-radius: 10px;
     background-color: hsl(20, 50%, 98%);

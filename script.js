@@ -57,7 +57,6 @@ function addEvent(btn){
     btn.addEventListener('click', function (){
         event.stopPropagation()
         console.log('button event')
-//remove event listners 
         numbering(btn);
         
 
