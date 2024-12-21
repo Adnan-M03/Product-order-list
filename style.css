@@ -69,12 +69,15 @@ ul li{
         }
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.616);
 }
+
+/* To check the coloring system for later styling*/
 .last-list{
     color:red;
      & p{
         color:blue;
      }
 }
+
 
 
 
