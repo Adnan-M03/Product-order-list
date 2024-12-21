@@ -1,6 +1,6 @@
 const btns = document.querySelectorAll('.btn');
 
-
+// Using a single variable for inumerating the add to cart amounts
 order = 0;
 function numbering(btn){
     order = 1;
