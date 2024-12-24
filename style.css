@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    margin: 2rem;
+    background-color: hsl(13, 31%, 94%);
+}
+.cards{
+    all:unset;
+    display: grid;
+
+}
+
+ul li{
+    list-style-type:none;
+        & .cards-image{
+            max-width: 100%;
+            margin:1rem 0;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.616);
+        }
+}
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn{
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    border:1px solid hsl(14, 86%, 42%);
+    border-radius:30px 30px 30px 30px;
+    background-color: hsl(13, 31%, 94%);
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    height:1.5rem;
+    padding: 1rem;
+        & .cards-decr,.cards-incr{
+            width:10px;
+            height:10px;
+            display: none;
+            border: 1px solid hsl(13, 31%, 94%);
+            border-radius: 20px;
+            padding: 3px;
+            cursor: pointer;
+    }
+        & .cards-off{
+            display:none;
+        }
+        & .cards-on{
+            display: inline;
+        }
+        & .cards-btn-txt{
+            color:hsl(14, 65%, 9%);
+        }
+}
+.cart{
+    /* border: 1px solid black; */
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: hsl(20, 50%, 98%);
+    display: flex;
+    flex-direction: column;
+        & img{
+            align-self: center;
+        }
+        & >h3{
+            margin-bottom:1rem;
+        }
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.616);
+}
+.last-list{
+    color:red;
+     & p{
+        color:blue;
+     }
+}
+.cart-prices-writing{
+        & p{
+            display: inline;
+            margin: auto .8rem;
+        }
+}
+.cart-prices-container{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+    border-bottom: 1px solid black;
+}
+
+#cart-order{
+    display: flex;
+    flex-direction: column;
+        
+}
+#cart-order-total{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:.5rem;& :nth-child(2){
+        font-size: x-large;
+        font-weight: bolder;
+    }
+}
+#cart-order-carbon{
+    display: flex;
+    justify-content: space-evenly;
+    margin:.5rem;
+    background-color: hsl(14, 25%, 92%);
+    padding: .4rem;
+    border-radius: 5px;
+}
+
+
+
+
+
+
