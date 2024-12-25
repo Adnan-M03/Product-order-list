@@ -2,6 +2,7 @@ const fetchfiles = fetch('./data.json');
 const ulist = document.querySelector('.cards');
 const cartH = document.querySelector('.cart h3');
 const cart = document.querySelector('.cart-prices');
+
 let btns;
 let svgs;
 let cartTotal = 0;
@@ -11,6 +12,10 @@ let items ="";
 let datas;
 let attr;
 let quantities = {};
+let cartImg;
+let btnPara;
+let btnIncr;
+let btnDecr;
 
 
 
@@ -110,10 +115,10 @@ function numbering(btn){
     addQuantity(attr);
     cartTotal ++;
     map(true);
-        const cartImg = btn.querySelector('.cards-cartImg');
-        const btnPara = btn.querySelector('.cards-btn-txt');
-        const btnIncr = btn.querySelector('.cards-incr');
-        const btnDecr = btn.querySelector('.cards-decr');
+        cartImg = btn.querySelector('.cards-cartImg');
+        btnPara = btn.querySelector('.cards-btn-txt');
+        btnIncr = btn.querySelector('.cards-incr');
+        btnDecr = btn.querySelector('.cards-decr');
         svgs = document.querySelectorAll('.svg');
         //const orderProduct = document.querySelector('.cart-order-product');    
     if(!btnDecr.decrHandler){
@@ -130,7 +135,6 @@ function numbering(btn){
                 textContent(btnPara,attr);
                 map(true);
             }else{
-                function btnR(){
                 quantities[`${attr}`] -= 1;
                 subtractQuantity(attr);
                 cartTotal -= 1;
@@ -147,7 +151,6 @@ function numbering(btn){
                     map(false);
                     cartH.textContent = `Your Cart()`;
                 }
-                }btnR()
             }
         }
     }
@@ -220,6 +223,7 @@ function textContent(btnPara,attr){
 }
 
 function deleteItem(){
+    svgs = document.querySelectorAll('.svg');
     svgs.forEach((svg) =>{
         svg.addEventListener('click', function remove(){
             for(var i = 0; i <=8; i++){
@@ -227,10 +231,17 @@ function deleteItem(){
                     orderTotal -= datas[i].price;
                     cartTotal -= datas[i].quantity;
                     datas[i].quantity = 0;
+                    if(cartTotal > 0){
+                        map(true);
+                        cartH.textContent = `Your Cart(${cartTotal})`;
+                    }else{
+                        map(false);
+                        cartH.textContent = `Your Cart()`;
+                    }
                 }
             }console.log('svg event');
-            map(true);
-        })
+            deleteItem();
+        });
     });
     
 }
