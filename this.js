@@ -31,7 +31,7 @@ fetchfiles.then(response =>{
             ulist.innerHTML = code;
             //cart.innerHTML = items + order;
 
-            const btns = document.querySelectorAll('.btn');
+            btns = document.querySelectorAll('.btn');
             btns.forEach(addEvent);
 
         })
@@ -67,11 +67,11 @@ function cart_fun(elm){
             <div class="cart-prices-container">        
                 <span class="cart-prices-writing">
                     <h4>${elm['name']}</h4>
-                    <p class ='quantity'>${elm['quantity']}</p>
+                    <p class ='quantity'>${elm['quantity']}X</p>
                     <p>@$${elm['price'].toFixed(2)}</p>
-                    <p class="cart-order-product">${(elm['price'] * elm['quantity']).toFixed(2)}</p>
+                    <p class="cart-order-product">$${(elm['price'] * elm['quantity']).toFixed(2)}</p>
                 </span>
-                <svg class="svg ${elm['id']}" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path class="siwii" fill="black" d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"/></svg>
+                <svg class="svg ${elm['id']}" id="${elm['id']}" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path class="siwii" fill="black" d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"/></svg>
             </div> `
             //and then in the paragraph add ${orderTotal.toFixed(2)}
         order = `
@@ -134,6 +134,8 @@ function numbering(btn){
                 cartTotal -= 1;
                 textContent(btnPara,attr);
                 map(true);
+                addSvgEvent();
+
             }else{
                 quantities[`${attr}`] -= 1;
                 subtractQuantity(attr);
@@ -144,8 +146,8 @@ function numbering(btn){
                 btnDecr.classList.remove('cards-on');
                 btn.style.backgroundColor = 'hsl(20, 50%, 98%)';
                 btnPara.textContent = `Add to Cart`;
-                map(true);
                 if(cartTotal >= 1){
+                    map(true);
                     cartH.textContent = `Your Cart(${cartTotal})`;
                 }else{
                     map(false);
@@ -165,6 +167,8 @@ function numbering(btn){
             textContent(btnPara,attr);
             map(true);
             console.log(orderTotal);
+            addSvgEvent();
+
         }
     }
             
@@ -181,7 +185,7 @@ function numbering(btn){
         cartImg.classList.add('cards-off');
         btnDecr.classList.add('cards-on');
         btn.style.backgroundColor = 'hsl(14, 86%, 42%)';
-        deleteItem();
+        addSvgEvent();
 }
 
 
@@ -222,13 +226,14 @@ function textContent(btnPara,attr){
     cartH.textContent = `Your Cart(${cartTotal})`;
 }
 
-function deleteItem(){
+function addSvgEvent(){
     svgs = document.querySelectorAll('.svg');
     svgs.forEach((svg) =>{
         svg.addEventListener('click', function remove(){
             for(var i = 0; i <=8; i++){
-                if(`svg ${datas[i]['id']}` == svg.getAttribute('class')){
-                    orderTotal -= datas[i].price;
+                if(`${datas[i]['id']}` == svg.getAttribute('id')){
+                    quantities[`${svg.getAttribute('id')}`] = 0;
+                    orderTotal -= datas[i].price * datas[i].quantity;
                     cartTotal -= datas[i].quantity;
                     datas[i].quantity = 0;
                     if(cartTotal > 0){
@@ -239,8 +244,26 @@ function deleteItem(){
                         cartH.textContent = `Your Cart()`;
                     }
                 }
-            }console.log('svg event');
-            deleteItem();
+            }
+            btns.forEach((btn) => {
+                if(btn.getAttribute('id') == svg.getAttribute('id')){
+                    btns = document.querySelectorAll('.btn');
+                    cartImg = btn.querySelector('.cards-cartImg');
+                    btnPara = btn.querySelector('.cards-btn-txt');
+                    btnIncr = btn.querySelector('.cards-incr');
+                    btnDecr = btn.querySelector('.cards-decr');
+                    svgs = document.querySelectorAll('.svg');
+                    // To test the logic
+                    btnPara.style.color = 'hsl(14, 65%, 9%)';
+                    btnIncr.classList.remove('cards-on');
+                    cartImg.classList.remove('cards-off');
+                    btnDecr.classList.remove('cards-on');
+                    btn.style.backgroundColor = 'hsl(20, 50%, 98%)';
+                    btnPara.textContent = `Add to Cart`;
+                }
+            })
+            console.log('svg event');
+            addSvgEvent();
         });
     });
     
