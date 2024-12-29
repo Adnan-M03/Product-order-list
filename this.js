@@ -16,6 +16,7 @@ let cartImg;
 let btnPara;
 let btnIncr;
 let btnDecr;
+//let comfirmBtn;
 
 
 
@@ -51,7 +52,7 @@ function list_fun(elm){
             (max-width:560px) 427px,
             502px"
             src="" alt="" class="cards-image" >
-          <button class="btn" id="${elm['id']}"><img class="cards-decr" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
+          <button class="btn" id="${elm['id']}"><img class="cards-decr" id="${elm['id']}" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img id="${elm['id']}" class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
         </div>
 
         <p>${elm['category']}</p>
@@ -132,11 +133,16 @@ function numbering(btn){
                 quantities[`${attr}`] -= 1;
                 subtractQuantity(attr);
                 cartTotal -= 1;
-                textContent(btnPara,attr);
+                textContent(btnPara,btn);
                 map(true);
                 addSvgEvent();
 
             }else{
+                cartImg = btn.querySelector('.cards-cartImg');
+                btnPara = btn.querySelector('.cards-btn-txt');
+                btnIncr = btn.querySelector('.cards-incr');
+                btnDecr = btn.querySelector('.cards-decr');
+                //btn problem fix
                 quantities[`${attr}`] -= 1;
                 subtractQuantity(attr);
                 cartTotal -= 1;
@@ -164,7 +170,7 @@ function numbering(btn){
             quantities[`${attr}`] += 1;
             addQuantity(attr);
             cartTotal += 1;
-            textContent(btnPara,attr);
+            textContent(btnPara,btn);
             map(true);
             console.log(orderTotal);
             addSvgEvent();
@@ -180,7 +186,7 @@ function numbering(btn){
             btnDecr.addEventListener('click',btnDecr.decrHandler);
         
         btnPara.style.color = 'hsl(20, 50%, 98%)';
-        textContent(btnPara,attr);
+        textContent(btnPara,btn);
         btnIncr.classList.add('cards-on');
         cartImg.classList.add('cards-off');
         btnDecr.classList.add('cards-on');
@@ -220,7 +226,8 @@ function addEvent(btn){
     });         
 }
 
-function textContent(btnPara,attr){
+function textContent(btnPara,btn){
+    btnPara = btn.querySelector('.cards-btn-txt');
     btnPara.textContent = `${quantities[`${attr}`]}`;
     //orderProduct.textContent = `$${orderTotal.toFixed(2)}`;
     cartH.textContent = `Your Cart(${cartTotal})`;
@@ -228,6 +235,12 @@ function textContent(btnPara,attr){
 
 function addSvgEvent(){
     svgs = document.querySelectorAll('.svg');
+    comfirmBtn = document.getElementById('cart-order-button');
+    //Confirm Button Event
+    comfirmBtn.addEventListener('click', () =>{
+        
+    })
+    //SVG Button Event
     svgs.forEach((svg) =>{
         svg.addEventListener('click', function remove(){
             for(var i = 0; i <=8; i++){
@@ -247,7 +260,6 @@ function addSvgEvent(){
             }
             btns.forEach((btn) => {
                 if(btn.getAttribute('id') == svg.getAttribute('id')){
-                    btns = document.querySelectorAll('.btn');
                     cartImg = btn.querySelector('.cards-cartImg');
                     btnPara = btn.querySelector('.cards-btn-txt');
                     btnIncr = btn.querySelector('.cards-incr');
