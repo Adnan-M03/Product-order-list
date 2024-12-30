@@ -241,11 +241,10 @@ function addSvgEvent(){
     comfirmBtn.addEventListener('click', () =>{
         const div = document.getElementById('div');
         let upper = '';
+        let middle = '';
         let lower = '';
-        let confirm = '';
         datas.map((elm) =>{
-            if(elm['quantity'] > 0){
-                upper = `
+            upper = `
                 <div class="order-container">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21 32.121L13.5 24.6195L15.6195 22.5L21 27.879L32.3775 16.5L34.5 18.6225L21 32.121Z" fill="#1EA575"/>
@@ -253,25 +252,55 @@ function addSvgEvent(){
                 </svg>
                 <h1>Order Confirmed</h1>
                 <p class="order-para">We hope you enjoy</p>`
-            confirm += `
-            
-                
+            if(elm['quantity'] > 0){
+            middle += `
                 <div class="order-list">
                     <img src="${elm['image']['thumbnail']}">
                     <span>
                         <p>${elm['name']}</p>
-                        <p>${elm['quantity']}X</p>
-                        <p>@${elm['price']}</p>
+                        <p class="order-list-par">${elm['quantity']}X</p>
+                        <p class="order-list-para">@${elm['price']}</p>
                     </span>
                     <p>${(elm['price'] * elm['quantity']).toFixed(2)}</p>
-                </div>
+                    </div>
             `
             }
             lower = `
-            <p><
+            <div class ="order-lower">
+            <p>Order Total</p>
+            <p>${orderTotal}</p>
+            </div>
+                <button>Start New Order</button>
             </div>`
-            div.innerHTML = upper + confirm + lower;
         })
+            div.innerHTML = upper + middle + lower;
+            const newOrderBtn = document.querySelector('.order-container button');
+            newOrderBtn.addEventListener(('click'), function reset(){
+                for(var i = 0; i <=8; i++){
+                        quantities[`product${i+1}`] = 0;
+                        datas[i].quantity = 0;
+                    }
+                    console.log('newOrderBtn Event');
+                    orderTotal = 0;
+                    cartTotal = 0;
+                        map(false);
+                        cartH.textContent = `Your Cart()`;
+                    btns.forEach((btn) => {
+                        cartImg = btn.querySelector('.cards-cartImg');
+                        btnPara = btn.querySelector('.cards-btn-txt');
+                        btnIncr = btn.querySelector('.cards-incr');
+                        btnDecr = btn.querySelector('.cards-decr');
+                        svgs = document.querySelectorAll('.svg');
+                        // To test the logic
+                        btnPara.style.color = 'hsl(14, 65%, 9%)';
+                        btnIncr.classList.remove('cards-on');
+                        cartImg.classList.remove('cards-off');
+                        btnDecr.classList.remove('cards-on');
+                        btn.style.backgroundColor = 'hsl(20, 50%, 98%)';
+                        btnPara.textContent = `Add to Cart`;
+                })
+                div.innerHTML = '';
+                })
     })
     //SVG Button Event
     svgs.forEach((svg) =>{
