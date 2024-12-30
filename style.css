@@ -114,7 +114,9 @@ ul li{
     padding: .4rem;
     border-radius: 5px;
 }
-
+.svg{
+    cursor:pointer;
+}
 
 
 
