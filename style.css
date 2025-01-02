@@ -10,6 +10,7 @@ body{
     font-family: Red Hat Text;
     margin: 1.5rem;
     background-color: hsl(13, 31%, 94%);
+    touch-action:manipulation;
 }
 #header{
     margin-top: -.5rem;
