@@ -196,8 +196,8 @@ function numbering(btn) {
     btnIncr.classList.add('cards-on');
     cartImg.classList.add('cards-off');
     btnDecr.classList.add('cards-on');
-    btn.classList.toggle('btn-on');
-    productImg.classList.toggle('img-on');
+    btn.classList.add('btn-on');
+    productImg.classList.add('img-on');
     btn.style.backgroundColor = 'hsl(14, 86%, 42%)';
     addSvgEvent();
 }
@@ -333,6 +333,7 @@ function addSvgEvent() {
             }
             btns.forEach((btn) => {
                 if (btn.getAttribute('id') == svg.getAttribute('id')) {
+                    productImg = btn.previousElementSibling;
                     cartImg = btn.querySelector('.cards-cartImg');
                     btnPara = btn.querySelector('.cards-btn-txt');
                     btnIncr = btn.querySelector('.cards-incr');
