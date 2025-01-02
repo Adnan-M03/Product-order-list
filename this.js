@@ -16,6 +16,7 @@ let cartImg;
 let btnPara;
 let btnIncr;
 let btnDecr;
+let productImg;
 //let comfirmBtn;
 
 
@@ -67,13 +68,13 @@ function cart_fun(elm) {
     if (elm['quantity'] > 0) {
         items += `
             <div class="cart-prices-container">        
-                <span class="cart-prices-writing">
+                <span class="cart-prices-span">
                     <h4>${elm['name']}</h4>
                     <p class ='quantity'>${elm['quantity']}X</p>
                     <p>@$${elm['price'].toFixed(2)}</p>
                     <p class="cart-order-product">$${(elm['price'] * elm['quantity']).toFixed(2)}</p>
                 </span>
-                <svg class="svg ${elm['id']}" id="${elm['id']}" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path class="siwii" fill="black" d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"/></svg>
+                <svg class="svg ${elm['id']}" id="${elm['id']}" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 10 10"><path class="siwii" fill="hsl(12, 20%, 44%)" d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"/></svg>
             </div> `
         //and then in the paragraph add ${orderTotal.toFixed(2)}
         order = `
@@ -84,7 +85,7 @@ function cart_fun(elm) {
                 </div>
                 <div id="cart-order-carbon">
                     <img src="assets/images/icon-carbon-neutral.svg">
-                    <p>This is a carbon-neutral delivery</p>
+                    <p>This is a <b>carbon-neutral</b> delivery</p>
                 </div>
                 <button id="cart-order-button" >Confirm Order</button>
             </div>`
@@ -117,6 +118,7 @@ function numbering(btn) {
     addQuantity(attr);
     cartTotal++;
     map(true);
+    productImg = btn.previousElementSibling;
     cartImg = btn.querySelector('.cards-cartImg');
     btnPara = btn.querySelector('.cards-btn-txt');
     btnIncr = btn.querySelector('.cards-incr');
@@ -151,6 +153,8 @@ function numbering(btn) {
                 btnIncr.classList.remove('cards-on');
                 cartImg.classList.remove('cards-off');
                 btnDecr.classList.remove('cards-on');
+                btn.classList.toggle('btn-on');
+                productImg.classList.toggle('img-on');
                 btn.style.backgroundColor = 'hsl(20, 50%, 98%)';
                 btnPara.textContent = `Add to Cart`;
                 if (cartTotal >= 1) {
@@ -192,6 +196,8 @@ function numbering(btn) {
     btnIncr.classList.add('cards-on');
     cartImg.classList.add('cards-off');
     btnDecr.classList.add('cards-on');
+    btn.classList.toggle('btn-on');
+    productImg.classList.toggle('img-on');
     btn.style.backgroundColor = 'hsl(14, 86%, 42%)';
     addSvgEvent();
 }
@@ -298,6 +304,8 @@ function addSvgEvent() {
                     btnIncr.classList.remove('cards-on');
                     cartImg.classList.remove('cards-off');
                     btnDecr.classList.remove('cards-on');
+                    btn.classList.toggle('btn-on');
+                    productImg.classList.toggle('img-on');
                     btn.style.backgroundColor = 'hsl(20, 50%, 98%)';
                     btnPara.textContent = `Add to Cart`;
                 })
@@ -335,6 +343,8 @@ function addSvgEvent() {
                     btnIncr.classList.remove('cards-on');
                     cartImg.classList.remove('cards-off');
                     btnDecr.classList.remove('cards-on');
+                    btn.classList.toggle('btn-on');
+                    productImg.classList.toggle('img-on');
                     btn.style.backgroundColor = 'hsl(20, 50%, 98%)';
                     btnPara.textContent = `Add to Cart`;
                 }

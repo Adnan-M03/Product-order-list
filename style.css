@@ -42,17 +42,21 @@ ul li{
     align-items: center;
     width: 50%;
     height:2.8rem;
-    padding: 1rem;
+    padding:1rem;
     font-size:.9rem;
         & .cards-decr,.cards-incr{
-            width:10px;
-            height:10px;
+            width:12px;
+            height:12px;
             display: none;
             border: 1px solid hsl(13, 31%, 94%);
             border-radius: 20px;
             padding: 3px;
             cursor: pointer;
-    }
+        }
+        & .cards-decr,.cards-incr:hover{
+            background: white;
+            color: red;
+        }
         & .cards-off{
             display:none;
         }
