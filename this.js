@@ -2,6 +2,8 @@ const fetchfiles = fetch('./data.json');
 const ulist = document.querySelector('.cards');
 const cartH = document.querySelector('.cart h2');
 const cart = document.querySelector('.cart-prices');
+const overlay = document.querySelector('#overlay');
+
 
 let btns;
 let svgs;
@@ -49,10 +51,11 @@ function list_fun(elm) {
             srcset="${elm['image'].mobile} 654w,
             ${elm['image'].tablet} 427w,
             ${elm['image'].desktop} 502w"
+
             sizes="(max-width:400px) 654px,
-            (max-width:560px) 427px,
+            (max-width:700px) 427px,
             502px"
-            src="" alt="" class="cards-image" >
+            src="${elm['image'].tablet}" alt="" class="cards-image" >
           <button class="btn" id="${elm['id']}"><img class="cards-decr" id="${elm['id']}" src="assets/images/icon-decrement-quantity.svg"> <img class="cards-cartImg" src="assets/images/icon-add-to-cart.svg"><p class="cards-btn-txt">Add to Cart</p> <img id="${elm['id']}" class="cards-incr" src="assets/images/icon-increment-quantity.svg"> </button>
         </div>
         <div class="container-products">
@@ -70,8 +73,8 @@ function cart_fun(elm) {
             <div class="cart-prices-container">        
                 <span class="cart-prices-span">
                     <h4>${elm['name']}</h4>
-                    <p class ='quantity'>${elm['quantity']}X</p>
-                    <p>@$${elm['price'].toFixed(2)}</p>
+                    <p class ='quantity'>${elm['quantity']}x</p>
+                    <p>@ $${elm['price'].toFixed(2)}</p>
                     <p class="cart-order-product">$${(elm['price'] * elm['quantity']).toFixed(2)}</p>
                 </span>
                 <svg class="svg ${elm['id']}" id="${elm['id']}" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 10 10"><path class="siwii" fill="hsl(12, 20%, 44%)" d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"/></svg>
@@ -84,7 +87,7 @@ function cart_fun(elm) {
                     <p class="cart-orderTotal-para" >$${orderTotal.toFixed(2)}</p>
                 </div>
                 <div id="cart-order-carbon">
-                    <img src="assets/images/icon-carbon-neutral.svg">
+                    <img class="carbon" src="assets/images/icon-carbon-neutral.svg">
                     <p>This is a <b>carbon-neutral</b> delivery</p>
                 </div>
                 <button id="cart-order-button" >Confirm Order</button>
@@ -130,6 +133,8 @@ function numbering(btn) {
 
             // Copying attr in each place for it to be dynamic to the image incr,decr and not the button
             attr = btn.getAttribute('id');
+            productImg = btn.previousElementSibling;
+
             event.stopPropagation()
             console.log('decr event');
             if (quantities[`${attr}`] > 1) {
@@ -159,10 +164,10 @@ function numbering(btn) {
                 btnPara.textContent = `Add to Cart`;
                 if (cartTotal >= 1) {
                     map(true);
-                    cartH.textContent = `Your Cart(${cartTotal})`;
+                    cartH.textContent = `Your Cart (${cartTotal})`;
                 } else {
                     map(false);
-                    cartH.textContent = `Your Cart()`;
+                    cartH.textContent = `Your Cart (0)`;
                 }
                 addSvgEvent()
             }
@@ -171,6 +176,7 @@ function numbering(btn) {
     if (!btnIncr.incrHandler) {
         btnIncr.incrHandler = function incrH() {
             attr = btn.getAttribute('id');
+            productImg = btn.previousElementSibling;
             event.stopPropagation();
             console.log('incr event');
             quantities[`${attr}`] += 1;
@@ -238,7 +244,7 @@ function textContent(btnPara, btn) {
     btnPara = btn.querySelector('.cards-btn-txt');
     btnPara.textContent = `${quantities[`${attr}`]}`;
     //orderProduct.textContent = `$${orderTotal.toFixed(2)}`;
-    cartH.textContent = `Your Cart(${cartTotal})`;
+    cartH.textContent = `Your Cart (${cartTotal})`;
 }
 
 function addSvgEvent() {
@@ -309,21 +315,23 @@ function addSvgEvent() {
                     btnIncr = btn.querySelector('.cards-incr');
                     btnDecr = btn.querySelector('.cards-decr');
                     svgs = document.querySelectorAll('.svg');
+                    productImg = btn.previousElementSibling;
                     // To test the logic
                     btnPara.style.color = 'hsl(14, 65%, 9%)';
                     btnIncr.classList.remove('cards-on');
                     cartImg.classList.remove('cards-off');
                     btnDecr.classList.remove('cards-on');
-                    btn.classList.toggle('btn-on');
-                    productImg.classList.toggle('img-on');
+                    btn.classList.remove('btn-on');
+                    productImg.classList.remove('img-on');
                     btn.style.backgroundColor = 'hsl(20, 50%, 98%)';
                     btnPara.textContent = `Add to Cart`;
                 })
                 div.innerHTML = '';
-                images.forEach((img) =>{
-                    img.classList.remove('img-on');
-                })
+                window.location.href = '#header';
+                overlay.style.display = 'none';
+
             })
+            overlay.style.display = 'inline';
         })
     }
     //SVG Button Event
@@ -337,7 +345,7 @@ function addSvgEvent() {
                     datas[i].quantity = 0;
                     if (cartTotal > 0) {
                         map(true);
-                        cartH.textContent = `Your Cart(${cartTotal})`;
+                        cartH.textContent = `Your Cart (${cartTotal})`;
                     } else {
                         map(false);
                         cartH.textContent = `Your Cart()`;

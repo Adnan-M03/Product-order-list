@@ -9,7 +9,7 @@
 body{
     font-family: Red Hat Text;
     margin: 1.5rem;
-    background-color: hsl(13, 31%, 94%);
+    background-color: hsl(20, 50%, 98%);
     touch-action:manipulation;
 }
 #header{
@@ -23,6 +23,7 @@ body{
 
 ul li{
     list-style-type:none;
+    margin-bottom: .5rem;
         & .cards-image{
             max-width: 100%;
             margin:1rem 0;
@@ -44,7 +45,7 @@ ul li{
     }
     & :nth-child(2){
         font-weight: 600;
-        margin: .2rem 0;
+        margin: .3rem 0;
     }
     & :nth-child(3){
         font-weight: 600;
@@ -57,7 +58,7 @@ ul li{
     display: flex;
     border:1px solid hsl(12, 20%, 44%);
     border-radius:30px;
-    background-color: hsl(13, 31%, 94%);
+    background-color: white;
     justify-content: center;
     align-items: center;
     width: 50%;
@@ -105,10 +106,9 @@ ul li{
                 /*CONDITIONAL STYLING*/
 
 .cart{
-    margin: 1rem 0;
     padding:0 1.2rem;
     border-radius: 10px;
-    background-color: hsl(20, 50%, 98%);
+    background-color: white;
     display: flex;
     flex-direction: column;
         & >h2{
@@ -151,7 +151,8 @@ ul li{
     }
     & :nth-child(2){
         color: hsl(14, 86%, 42%);
-        font-weight: 700;
+        margin-left:0;
+        font-weight: 600;
     }
     & :nth-child(3){
         font-weight: 400;
@@ -160,6 +161,7 @@ ul li{
     & :nth-child(4){
         font-weight: 600;
         color: hsl(12, 20%, 44%);
+        margin-left: 0;
     }
         & h4{
             padding:.5rem 0;
@@ -202,7 +204,7 @@ ul li{
     display: flex;
     justify-content: space-evenly;
     margin:.5rem 0;
-    background-color: hsl(14, 25%, 92%);
+    background-color: hsl(20, 50%, 98%);
     padding: .8rem;
     border-radius: 8px;
 }
@@ -216,6 +218,8 @@ ul li{
     text-align: center;
     margin: 1rem 0;
     box-sizing:border-box;
+    cursor: pointer;
+
 }
 
 
@@ -327,7 +331,22 @@ ul li{
     text-align: center;
     margin: 2rem 0;
     box-sizing:border-box;
+    cursor: pointer;
 }
+#div{
+    z-index: 15;
+}
+#overlay{
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: none;
+    background-color: hsla(0, 0%, 0%, 0.363);
+}
+
 @keyframes slide-in {
     from {
       height: 10%;
@@ -337,6 +356,79 @@ ul li{
       height: 90%;
     }
   }
+
+@media (min-width:450px){
+    .cards{
+        display: grid;
+        grid-template-columns: 45% 45%;
+        column-gap: 3%;
+    }
+    .btn{
+        width: 70%;
+    }
+}
+@media (min-width:900px){
+    body{
+        display: flex;
+        margin:5.7rem 2rem 4.5rem 6.9rem;
+    }
+    #header{
+        font-size:2.5rem;
+        margin-bottom: 1rem;
+    }
+    .btn{
+        max-width: 10rem;
+        height:2.7rem;
+    }
+    .cards{
+        grid-template-columns: 1fr 1fr 1fr;
+        max-width: 800px;
+    }
+    .cart{
+        width: 350px;
+        margin-left: 2rem;
+        align-self: flex-start;
+        padding:0 1.5rem;
+            & >h2{
+                margin-top:1.5rem;
+            }
+            & .emptyCart{
+                width: 36%;
+                margin-bottom: 1rem ;
+                margin-top: 1.5rem;
+            }
+            & .cart-prices{
+                    & >p{
+                        padding-bottom: 2.5rem;
+                    }
+            }
+    }
+    .cart-prices-span {
+        & h4 {
+            padding: .5rem 0;
+            font-weight: 550;
+            font-size: .85rem;
+        }
+    }
+
+
+    .container{
+        max-width: 20rem;
+    }
+    .container-products :nth-child(1){
+        margin-top: 1.2rem;
+    }
+    .order-container{
+        width: 35rem;
+        height: 30rem;
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%);
+
+    }
+    
+}
+
 
 
 
