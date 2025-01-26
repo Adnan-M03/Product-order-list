@@ -11,6 +11,7 @@ body{
     margin: 1.5rem;
     background-color: hsl(20, 50%, 98%);
     touch-action:manipulation;
+    height: max-content;
 }
 #header{
     margin-top: -.5rem;
@@ -219,7 +220,7 @@ ul li{
     margin: 1rem 0;
     box-sizing:border-box;
     cursor: pointer;
-
+    transition: background-color 700ms;
 }
 
 
@@ -259,7 +260,7 @@ ul li{
 
 
 .order-containerTwo{
-    background-color: hsl(13, 31%, 94%);
+    background-color: hsl(20, 50%, 98%);
     padding: 1.5rem;
     border-radius: 10px;
 }
@@ -332,6 +333,7 @@ ul li{
     margin: 2rem 0;
     box-sizing:border-box;
     cursor: pointer;
+    transition: background-color 700ms;
 }
 #div{
     z-index: 15;
@@ -376,10 +378,7 @@ ul li{
         font-size:2.5rem;
         margin-bottom: 1rem;
     }
-    .btn{
-        max-width: 10rem;
-        height:2.7rem;
-    }
+    
     .cards{
         grid-template-columns: 1fr 1fr 1fr;
         max-width: 800px;
@@ -419,13 +418,74 @@ ul li{
         margin-top: 1.2rem;
     }
     .order-container{
-        width: 35rem;
-        height: 30rem;
-        top: 50%; 
-        left: 50%; 
-        transform: translate(-50%, -50%);
-
+        position:absolute;
+        width: 37rem;
+        top: calc(60% - 1.25rem );
+        left: 53%; 
+        transform: translate(-50%, 0%);
+        border-radius: 1rem;
+        height:max-content;
+        overflow: visible;
+        animation-name: pop;
+        animation-duration: 800ms;
     }
+    @keyframes pop{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .order-subcontainer{
+        margin:2.5rem;
+            & >h1{
+                font-size: 2.5rem;
+                max-width: 100%;
+            }
+            & span .order-list-name{
+                font-size: .85rem;
+                width: auto;
+            }
+            & img{
+                width: 3rem;
+            }
+    }
+    #order-lower-btn{
+        margin-bottom: 0%;
+    }
+    #cart-order-button:hover , #order-lower-btn:hover{
+        background-color: hsl(14, 90%, 35%);
+    }
+    .btn{
+        max-width: 10rem;
+        height:2.7rem;
+    }
+    .btn:hover{
+        cursor: pointer;
+            & p{
+                color: hsl(14, 86%, 42%);
+            }
+            & .cards-decr:hover, .cards-incr:hover{
+                background: white;
+                color: hsl(14, 86%, 42%);
+            }
+    }
+    .svg {
+        cursor: pointer;
+        border: 2px solid hsl(7, 20%, 60%);
+        color: hsl(7, 20%, 60%);
+        padding: .15rem;
+        border-radius: 50%;
+    }
+    .svg:hover{
+        border: 2px solid hsl(14, 65%, 9%);
+            & .siwii{
+                fill: hsl(14, 65%, 9%);
+            }
+    }
+    
+    
     
 }
 
