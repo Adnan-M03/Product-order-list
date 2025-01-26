@@ -91,6 +91,7 @@ ul li{
         & .cards-btn-txt{
             font-family: Red Hat Text;
             font-weight: 600;
+            color: hsl(14, 65%, 9%);
         }
 }
 
@@ -233,7 +234,7 @@ ul li{
     width: 100%;
     height: 90%;
     z-index: 10;
-    animation-duration: 400ms;
+    animation-duration: 300ms;
     animation-timing-function:ease-out;
     animation-name: slide-in;
     overflow: scroll;
@@ -346,7 +347,7 @@ ul li{
     right: 0;
     z-index: 10;
     display: none;
-    background-color: hsla(0, 0%, 0%, 0.363);
+    background-color: hsla(0, 0%, 0%, 0.438);
 }
 
 @keyframes slide-in {
@@ -460,15 +461,21 @@ ul li{
     .btn{
         max-width: 10rem;
         height:2.7rem;
+        padding: .7rem;
     }
     .btn:hover{
         cursor: pointer;
             & p{
+                transition: color 400ms;
                 color: hsl(14, 86%, 42%);
             }
             & .cards-decr:hover, .cards-incr:hover{
-                background: white;
-                color: hsl(14, 86%, 42%);
+                transition: background-color 500ms;
+                background-color: white;
+                    & path{
+                        transition: fill 500ms;
+                        fill: hsl(14, 86%, 42%);
+                    }
             }
     }
     .svg {
@@ -479,14 +486,13 @@ ul li{
         border-radius: 50%;
     }
     .svg:hover{
+        transition: border 500ms;
         border: 2px solid hsl(14, 65%, 9%);
             & .siwii{
+                transition: fill 500ms;
                 fill: hsl(14, 65%, 9%);
             }
     }
-    
-    
-    
 }
 
 
