@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Final Design
 
-![Final design Image](design\Final-design.png)
+![Final design Image](design/Final-design.png)
 
 
 ### Links
