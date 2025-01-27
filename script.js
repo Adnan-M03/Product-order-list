@@ -29,7 +29,6 @@ fetchfiles.then(response => {
         datas = data;
         datas.map((element) => {
             list_fun(element);
-            //cart_fun(element);
         })
         // This is where most functionalities must take place, after all content is loaded asyncly
         ulist.innerHTML = code;
@@ -132,7 +131,6 @@ function numbering(btn) {
     btnIncr = btn.querySelector('.cards-incr');
     btnDecr = btn.querySelector('.cards-decr');
     svgs = document.querySelectorAll('.svg');
-    //const orderProduct = document.querySelector('.cart-order-product');    
     if (!btnDecr.decrHandler) {
         btnDecr.decrHandler = function decrH() {
 
@@ -248,7 +246,6 @@ function addEvent(btn) {
 function textContent(btnPara, btn) {
     btnPara = btn.querySelector('.cards-btn-txt');
     btnPara.textContent = `${quantities[`${attr}`]}`;
-    //orderProduct.textContent = `$${orderTotal.toFixed(2)}`;
     cartH.textContent = `Your Cart (${cartTotal})`;
 }
 
