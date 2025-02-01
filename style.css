@@ -385,6 +385,8 @@ ul li{
         max-width: 800px;
     }
     .cart{
+        position: sticky;
+        top: 3rem;
         width: 350px;
         margin-left: 2rem;
         align-self: flex-start;
